@@ -53,11 +53,12 @@ function findSwitchNetwork(resolve) {
         if (err) {
             console.log(err);
         } else {
-            let network = networks.filter(n => n.ssid.startsWith('ITEAD-'))[0];
+            let network = networks.filter(n => n.ssid.startsWith('AICAMERA'))[0];
 
             if (!network) {
                 findSwitchNetwork(resolve);
             } else {
+                console.log(network);
                 resolve(network);
             }
         }
@@ -73,7 +74,7 @@ function connect(network) {
     return new Promise(resolve => {
         wifi.connect({
             ssid : network.ssid,
-            password : '12345678'
+            password : 'smartcam1!'
         }, function(err) {
             if (err) {
                 throw err;
